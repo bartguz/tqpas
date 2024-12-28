@@ -1,0 +1,168 @@
+[
+  {
+    "id": "qo16rcj3h",
+    "name": "Bob Snow",
+    "department": "Engineering",
+    "status": "OFFBOARDED",
+    "email": "bob.snow@wp.pl",
+    "equipments": [
+      {
+        "id": "uctshfgi2h",
+        "name": "Macbook Air"
+      }
+    ]
+  },
+  {
+    "id": "i9odfjfy28",
+    "name": "Coral Reeves",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "coral.reeves@wp.pl",
+    "equipments": [
+      {
+        "id": "yapgp3wg81",
+        "name": "Macbook Air"
+      }
+    ]
+  },
+  {
+    "id": "n3bebfr3kv",
+    "name": "Emma Schmidt",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "emma.schmidt@wp.pl",
+    "equipments": [
+      {
+        "id": "panq7qqhzmp",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "0yp32ljfcgph",
+        "name": "Magic Mouse"
+      }
+    ]
+  },
+  {
+    "id": "x7atglyhcc9",
+    "name": "Bob Hamilton",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "bob.hamilton@wp.pl",
+    "equipments": [
+      {
+        "id": "z7hpez2rkv8",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "rt2cqnprbx8",
+        "name": "Magic Mouse"
+      }
+    ]
+  },
+  {
+    "id": "0xq5l5kxgj1e",
+    "name": "Coral Smith",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "coral.smith@wp.pl",
+    "equipments": [
+      {
+        "id": "ccsl2645rjt",
+        "name": "Macbook Air"
+      }
+    ]
+  },
+  {
+    "id": "rnq7vdhufm",
+    "name": "Steve Milic",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "steve.milic@wp.pl",
+    "equipments": [
+      {
+        "id": "9lt75iidptd",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "ujsqgm7x74a",
+        "name": "Magic Mouse"
+      },
+      {
+        "id": "68ph776jr6u",
+        "name": "Macbook Water"
+      }
+    ]
+  },
+  {
+    "id": "grmpskjlrou",
+    "name": "Amy Schmidt",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "amy.schmidt@wp.pl",
+    "equipments": [
+      {
+        "id": "e00fs4ctkq",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "gpdgwc01x5u",
+        "name": "Magic Mouse"
+      }
+    ]
+  },
+  {
+    "id": "mxms8i8fg7",
+    "name": "Jack Strauss",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "jack.strauss@wp.pl",
+    "equipments": [
+      {
+        "id": "0wvhevlpx9v",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "34ux2adwklj",
+        "name": "Magic Mouse"
+      }
+    ]
+  },
+  {
+    "id": "039lguiprh3d",
+    "name": "Amy Schmidt",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "amy.schmidt@wp.pl",
+    "equipments": [
+      {
+        "id": "y0zy0mv1nhe",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "t9ygd4ahtbe",
+        "name": "Magic Mouse"
+      },
+      {
+        "id": "1iw4o6e9rctj",
+        "name": "Macbook Water"
+      }
+    ]
+  },
+  {
+    "id": "uvd2qmsnw0s",
+    "name": "Emma Milic",
+    "department": "Engineering",
+    "status": "ACTIVE",
+    "email": "emma.milic@wp.pl",
+    "equipments": [
+      {
+        "id": "4d2bgq9ok9",
+        "name": "Macbook Air"
+      },
+      {
+        "id": "plo31bmcrr",
+        "name": "Magic Mouse"
+      }
+    ]
+  }
+]
