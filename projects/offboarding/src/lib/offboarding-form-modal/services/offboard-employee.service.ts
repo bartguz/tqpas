@@ -59,11 +59,11 @@ export class OffboardEmployeeService implements OffboardEmployeeProvider {
         switchMap(() => this.employeeDetailsStorageService.employee$),
         take(1),
         tap((employee: Employee) => this.updateEmployeeDetails(employee)),
-        catchError((error: HttpErrorResponse) => {
+        catchError((errorResponse: HttpErrorResponse) => {
           this.errorSubject.next(
-            error.status === 409 ? error.error.errorMessage : 'unknown error'
+            errorResponse.status === 409 ? errorResponse.error.errorMessage : 'Unknown error'
           );
-          if (error.status === 409) return throwError(() => error.message);
+          if (errorResponse.status === 409) return throwError(() => errorResponse.message);
           return throwError(() => void 0);
         }),
         map(() => void 0),

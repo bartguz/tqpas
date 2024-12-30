@@ -12,6 +12,7 @@ run `npm run start` to start angular app.
 
 ### assignement understanding
 Assignement mentions "Google Material Design components". With vague wording like that, I assumed I am not to use Angular Material, but https://github.com/material-components/material-web - web components.
+For validators I used only the simplest ones. phone number and postal code are extremely different across the globe, and without further details, there is no valid choice.
 I assumed I shouldnt use any additional libraries.
 
 I left few notes around. please, look for comments with 'bg-info' - they give some additional insight.
@@ -55,3 +56,7 @@ libraries - contain components, reusable code, business flows.
 
 ### project structure
 I attempted to group features into vertical slices. This increases cohesion. App is too benefit from different structure.
+
+
+#### final notes
+many of my decisions here come up from past experiences. without project context, planned development and envisioned growth direction, this is what I default to. everything may change depending on actual scale and requirements. 

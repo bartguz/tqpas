@@ -1,5 +1,5 @@
 @if({loading:loading$ | async, employee:employee$|async};as data){
-<md-text-button (click)="goBack()">
+<md-text-button data-selector="offboarding-employee-details__back-button" (click)="goBack()">
   <!-- <md-icon slot="icon">chevron_left</md-icon> -->
   <md-icon slot="icon">arrow_back_ios</md-icon>
   Back
@@ -9,7 +9,7 @@
     @if(data.loading){<lib-skeleton style="width: 10dvw; height: 29px" />}
     @else{ {{ data.employee?.name }} }
   </h2>
-  <md-filled-button [disabled]="(isOffboardable$ | async) === false" (click)="modal.open()">
+  <md-filled-button data-selector="offboarding-employee-details__offboard-button" [disabled]="(isOffboardable$ | async) === false" (click)="modal.open()">
     <span
       >@if(data.loading){<lib-skeleton style="width: 5dvw" />} @else{
       {{ offboardButtonText$ | async }}

@@ -4,7 +4,7 @@ import { OffboardingRoutes } from './offboarding-routes';
 export const offboardingRouting: Route = {
   path: OffboardingRoutes.Offboarding,
   loadComponent: () =>
-    import('./offboarding-scope-page/offboarding-scope-page.component').then(
+    import('./offboarding-scope-page.component').then(
       (c) => c.OffboardingScopePageComponent
     ),
   children: [
