@@ -14,6 +14,7 @@ run `npm run start` to start angular app.
 Assignement mentions "Google Material Design components". With vague wording like that, I assumed I am not to use Angular Material, but https://github.com/material-components/material-web - web components.
 For validators I used only the simplest ones. phone number and postal code are extremely different across the globe, and without further details, there is no valid choice.
 I assumed I shouldnt use any additional libraries.
+I decided to write this app as if I was future-proofing any real project. It may be overly complex for this simple scope, but limiting myself here would not allow me to showing anything interesting.
 
 I left few notes around. please, look for comments with 'bg-info' - they give some additional insight.
 
