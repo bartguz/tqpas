@@ -51,7 +51,7 @@ For employee list and details I decided create separate storages, instead of usi
 - list tend to use less informations than detail pages. detail page will have to fetch the additional data. current implementation would make it easier to achieve that. otherwise someone may try to create model to fit both places, making it too big, carrying often not needed data.
 -components are more independent - details component could be reused in some other part of app by exporting it as public - it will not require pulling entire employee list.
 
-I'm adding "v2" - implementation, where everything is based on central employees list storage. it makes code a bit simpler, but lowers independence of details component. GET single employee endpoint is useless in this approach. To see how it works, please write in address bar '/offboarding-v2' - this will lead to the main list equivalent.
+I'm adding "v2" - implementation, where everything is based on central employees list storage. it makes code a bit simpler, but lowers independence of details component (). GET single employee endpoint is useless in this approach. To see how it works, please write in address bar '/offboarding-v2' - this will lead to the main list equivalent.
 
 ### app & libraries:
 division into packages and use of tsconfig paths makes code prepared for division into packages served via package manager. it also promotes division into chunks.
