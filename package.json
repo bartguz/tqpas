@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve app",
+    "start-server":"node ./mock-server/server.js",
+    "gen-employees":"node ./mock-server/generator.js 10",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

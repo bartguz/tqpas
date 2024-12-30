@@ -15,7 +15,8 @@ import { Observable } from 'rxjs';
 import { Employee } from '../models/employee';
 import { Equipment } from '../models/equipment';
 import { OffboardingRoutes } from '../offboarding-routes';
-import { EmployeeListService } from '../services/employee-list.service';
+import { EmployeeListService } from './services/employee-list.service';
+import { EmployeeListItem } from './models/employe-list-item';
 
 @Component({
   selector: 'lib-offboarding-employee-list',
@@ -34,7 +35,7 @@ import { EmployeeListService } from '../services/employee-list.service';
 export class OffboardingEmployeeListComponent {
   private readonly employeeListService: EmployeeListService =
     inject(EmployeeListService);
-  readonly employees$: Observable<Employee[]> =
+  readonly employeesListItems$: Observable<EmployeeListItem[]> =
     this.employeeListService.filteredEmployees$;
   readonly loading$ = this.employeeListService.loading$;
 
@@ -42,17 +43,5 @@ export class OffboardingEmployeeListComponent {
     this.employeeListService.setSearchFilter(value);
   }
 
-  createDetailsLink(employee: Employee): string {
-    return `/${OffboardingRoutes.Offboarding}/${OffboardingRoutes.Employee}/${employee.id}`;
-  }
 
-  formatEquipments(employee: Employee, limit: number = 2): string {
-    let deviceNames: string = (employee.equipments?.slice(0, limit) ?? [])
-      .map((equipment: Equipment) => equipment.name)
-      .join(', ');
-    if (employee.equipments?.length > limit)
-      deviceNames =
-        deviceNames + ` +${employee.equipments.length - limit} more`;
-    return deviceNames;
-  }
 }

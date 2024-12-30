@@ -11,13 +11,13 @@ import '@material/web/icon/icon';
 import { shareReplayOne } from '@tqpas/shared';
 import { SkeletonComponent } from '@tqpas/ui';
 import { combineLatest, map, Observable, startWith } from 'rxjs';
-import { LoadSingleEmployeeApiService } from '../api/load-single-employee-api.service';
+import { LoadSingleEmployeeApiService } from './api/load-single-employee-api.service';
 import { Employee } from '../models/employee';
 import { EmployeeStatus } from '../models/employee-status';
 import { OffboardingFormModalComponent } from '../offboarding-form-modal/offboarding-form-modal.component';
-import { EmployeeDetailsService } from '../services/employee-details.service';
-import { LOAD_SINGLE_EMPLOYEE_PROVIDER } from '../tokens/load-single-employee.token';
-import { EmployeeDetailsStorageService } from '../services/employee-details-storage.service';
+import { EmployeeDetailsService } from './service/employee-details.service';
+import { LOAD_SINGLE_EMPLOYEE_PROVIDER } from './tokens/load-single-employee.token';
+import { EmployeeDetailsStorageService } from './service/employee-details-storage.service';
 
 @Component({
   selector: 'lib-offboarding-employee-details',
@@ -50,7 +50,6 @@ export class OffboardingEmployeeDetailsComponent {
     this.employee$,
   ]).pipe(
     map(([loading, employee]: [boolean, Employee | undefined]) => {
-      console.log(loading, employee);
       if (loading) return false;
       if (!employee) return false;
       if (employee.status === EmployeeStatus.Offboarded) return false;

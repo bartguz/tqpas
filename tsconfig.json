@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -19,13 +20,13 @@
     "module": "ES2022",
     "paths": {
       "@tqpas/shared": [
-        "./projects/shared/src/public-api.ts"
+        "projects/shared/src/public-api.ts"
       ],
       "@tqpas/ui": [
-        "./projects/ui/src/public-api.ts"
+        "projects/ui/src/public-api.ts"
       ],
       "@tqpas/offboarding": [
-        "./projects/offboarding/src/public-api.ts"
+        "projects/offboarding/src/public-api.ts"
       ],
     }
   },

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 
 @Injectable()
 export class EmployeeDetailsStorageService {

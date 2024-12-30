@@ -1,6 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 
 export const LOAD_SINGLE_EMPLOYEE_PROVIDER: InjectionToken<LoadSingleEmployeeProvider> =
   new InjectionToken<LoadSingleEmployeeProvider>(

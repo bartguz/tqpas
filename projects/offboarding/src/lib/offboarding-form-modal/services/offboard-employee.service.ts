@@ -11,16 +11,16 @@ import {
   tap,
   throwError,
 } from 'rxjs';
-import { Employee } from '../models/employee';
-import { EmployeeOffboarding } from '../models/employee-offboarding';
-import { EmployeeStatus } from '../models/employee-status';
+import { Employee } from '../../models/employee';
+import { EmployeeStatus } from '../../models/employee-status';
+import { EmployeeDetailsStorageService } from '../../offboarding-employee-details/service/employee-details-storage.service';
+import { EmployeeStorageService } from '../../offboarding-employee-list/services/employee-storage.service';
 import {
   CREATE_EMPLOYEE_OFFBOARDING_PROVIDER,
   CreateEmployeeOffboardingProvider,
 } from '../tokens/create-employee-offboarding.token';
+import { EmployeeOffboarding } from '../models/employee-offboarding';
 import { OffboardEmployeeProvider } from '../tokens/offboard-employee.token';
-import { EmployeeDetailsStorageService } from './employee-details-storage.service';
-import { EmployeeStorageService } from './employee-storage.service';
 
 @Injectable()
 export class OffboardEmployeeService implements OffboardEmployeeProvider {
@@ -60,7 +60,6 @@ export class OffboardEmployeeService implements OffboardEmployeeProvider {
         take(1),
         tap((employee: Employee) => this.updateEmployeeDetails(employee)),
         catchError((error: HttpErrorResponse) => {
-          console.log(error);
           this.errorSubject.next(
             error.status === 409 ? error.error.errorMessage : 'unknown error'
           );

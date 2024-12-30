@@ -35,19 +35,19 @@
         <td><lib-skeleton /></td>
         <td><lib-skeleton /></td>
       </tr>
-      } @else { @if(employees$ | async; as employees){ @for(employee of
-      employees; track employee.id+employee.status){
+      } @else { @if(employeesListItems$ | async; as items){ @for(item of items;
+      track item.employee.id+item.employee.status){
       <!-- bg-info anchor to allow opening in new window with cmd+left clikc or on phone with long press. display table-row to keep compability -->
       <a
-        [routerLink]="createDetailsLink(employee)"
-        [state]="{employee}"
+        [routerLink]="item.routeUrl"
+        [state]="{ employee: item.employee }"
         class="tqpas-border-radius-10-px"
       >
-        <td>{{ employee.name }}</td>
-        <td>{{ employee.email }}</td>
-        <td>{{ employee.department }}</td>
-        <td>{{ formatEquipments(employee) }}</td>
-        <td>{{ employee.status | titlecase }}</td>
+        <td>{{ item.employee.name }}</td>
+        <td>{{ item.employee.email }}</td>
+        <td>{{ item.employee.department }}</td>
+        <td>{{ item.equipmentsFormatted }}</td>
+        <td>{{ item.employee.status | titlecase }}</td>
       </a>
       } }}
     </table>

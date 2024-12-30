@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { shareReplayOne } from '@tqpas/shared';
 import { BehaviorSubject, filter, finalize, Observable, tap } from 'rxjs';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 import { LOAD_SINGLE_EMPLOYEE_PROVIDER } from '../tokens/load-single-employee.token';
 import { EmployeeDetailsStorageService } from './employee-details-storage.service';
 

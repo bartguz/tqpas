@@ -21,13 +21,13 @@ import { MdDialog } from '@material/web/dialog/dialog';
 import '@material/web/progress/linear-progress';
 import '@material/web/textfield/outlined-text-field';
 import { Observable, switchMap, tap } from 'rxjs';
-import { CreateEmployeeOffboardingApiService } from '../api/create-employee-offboarding-api.service';
-import { OffboardEmployeeService } from '../services/offboard-employee.service';
-import { CREATE_EMPLOYEE_OFFBOARDING_PROVIDER } from '../tokens/create-employee-offboarding.token';
+import { CREATE_EMPLOYEE_OFFBOARDING_PROVIDER } from './tokens/create-employee-offboarding.token';
+import { CreateEmployeeOffboardingApiService } from './api/create-employee-offboarding-api.service';
+import { OffboardEmployeeService } from './services/offboard-employee.service';
 import {
   OFFBOARD_EMPLOYEE_PROVIDER,
   OffboardEmployeeProvider,
-} from '../tokens/offboard-employee.token';
+} from './tokens/offboard-employee.token';
 
 @Component({
   selector: 'lib-offboarding-form-modal',
@@ -52,14 +52,15 @@ export class OffboardingFormModalComponent {
   private readonly offboardEmployeeProvider: OffboardEmployeeProvider = inject(
     OFFBOARD_EMPLOYEE_PROVIDER
   );
+  
   readonly employeeId = input<string>();
   readonly offboardingForm: FormGroup = new FormGroup({
     receiver: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/\d+/)]),
+    streetLine1: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    postalCode: new FormControl('', [Validators.required]),
+    postalCode: new FormControl('', [Validators.required, Validators.pattern(/\d+/)]),
     country: new FormControl('', [Validators.required]),
     notes: new FormControl(''),
   });

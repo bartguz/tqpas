@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Environment, ENVIRONMENT } from '@tqpas/shared';
 import { catchError, Observable, of } from 'rxjs';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 import { LoadSingleEmployeeProvider } from '../tokens/load-single-employee.token';
 
 @Injectable()
