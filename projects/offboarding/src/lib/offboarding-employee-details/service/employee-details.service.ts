@@ -19,6 +19,7 @@ export class EmployeeDetailsService {
 
   constructor() {
     //bg-info these will work reliably because service is page-scoped.
+    // attempt to use existing model pased via navigation state to improve perceived performance. in case models would be different (bigger model in details), incoming model could be used to display initial core info (name, email) awhile the rest is being fetched.
     const employee: Employee =
       inject(Router).getCurrentNavigation()?.extras?.state?.['employee'];
     if (employee) {

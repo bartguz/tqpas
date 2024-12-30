@@ -9,6 +9,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -20,7 +21,7 @@ import '@material/web/dialog/dialog';
 import { MdDialog } from '@material/web/dialog/dialog';
 import '@material/web/progress/linear-progress';
 import '@material/web/textfield/outlined-text-field';
-import { Observable, switchMap, tap } from 'rxjs';
+import { map, merge, Observable, switchMap, tap } from 'rxjs';
 import { CREATE_EMPLOYEE_OFFBOARDING_PROVIDER } from './tokens/create-employee-offboarding.token';
 import { CreateEmployeeOffboardingApiService } from './api/create-employee-offboarding-api.service';
 import { OffboardEmployeeService } from './services/offboard-employee.service';
@@ -52,20 +53,35 @@ export class OffboardingFormModalComponent {
   private readonly offboardEmployeeProvider: OffboardEmployeeProvider = inject(
     OFFBOARD_EMPLOYEE_PROVIDER
   );
-  
+
   readonly employeeId = input<string>();
   readonly offboardingForm: FormGroup = new FormGroup({
     receiver: new FormControl('', [Validators.required]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.pattern(/\d+/)]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/\d+/),
+    ]),
     streetLine1: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
-    postalCode: new FormControl('', [Validators.required, Validators.pattern(/\d+/)]),
+    postalCode: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/\d+/),
+    ]),
     country: new FormControl('', [Validators.required]),
     notes: new FormControl(''),
   });
 
-  readonly controlNames: string[] = Object.keys(this.offboardingForm.controls);
+  readonly controlDefinitions: {
+    controlName: string;
+    hasError$: Observable<boolean>;
+  }[] = Object.keys(this.offboardingForm.controls).map(
+    (controlName: string) => ({
+      controlName,
+      hasError$: this.createHasErrorPipe$(controlName),
+    })
+  );
+
   readonly error$: Observable<string> = this.offboardEmployeeProvider.error$;
   readonly processing$: Observable<boolean> =
     this.offboardEmployeeProvider.processing$;
@@ -73,12 +89,6 @@ export class OffboardingFormModalComponent {
   open(): void {
     this.offboardingForm.statusChanges;
     this.dialog.nativeElement.show();
-  }
-
-  hasError(controlName: string): boolean {
-    Object.keys(this.offboardingForm.controls);
-    const { touched, invalid } = this.offboardingForm.get(controlName)!;
-    return touched && invalid;
   }
 
   offboardEmployee(): void {
@@ -89,5 +99,13 @@ export class OffboardingFormModalComponent {
         tap(() => this.offboardingForm.reset())
       )
       .subscribe();
+  }
+
+  private createHasErrorPipe$(controlName: string): Observable<boolean> {
+    const control: AbstractControl<unknown> =
+      this.offboardingForm.get(controlName)!;
+    return merge(control.statusChanges, control.valueChanges).pipe(
+      map(() => (control.touched || control.dirty) && control.invalid)
+    );
   }
 }
