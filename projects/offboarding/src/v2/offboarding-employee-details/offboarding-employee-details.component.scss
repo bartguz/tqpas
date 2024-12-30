@@ -1,0 +1,87 @@
+:host {
+  width: 100%;
+
+  lib-skeleton {
+    height: 10px;
+  }
+
+  h5 {
+    margin: unset;
+    margin-left: 8px;
+  }
+
+  >md-text-button {
+    --md-sys-color-primary: var(--shade-color);
+  }
+
+  [data-selector="offboarding-employee-details__header"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    md-filled-button {
+      height: 20px;
+    }
+  }
+
+  [data-selector="offboarding-employee-details__info"] {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    md-filled-button {
+      height: 20px;
+    }
+
+    >div {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 10px;
+      flex-grow: 1;
+
+      >div {
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+
+  [data-selector="offboarding-employee-details__equipment"] {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: wrap;
+
+    md-filled-button {
+      height: 20px;
+    }
+
+    >div {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      flex-grow: 1;
+
+      >div {
+        padding: 10px;
+        display: inline-flex;
+        align-items: center;
+
+        &:hover {
+          background-color: var(--hover-color);
+        }
+
+        &+div {
+          border-top: 1px solid var(--hover-color)
+        }
+      }
+    }
+  }
+}

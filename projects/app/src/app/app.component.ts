@@ -5,7 +5,7 @@ import '@material/web/all';
   selector: 'app-root',
   imports: [RouterOutlet],
   template: `
-    <header class="tqpas-elevation-3 tqpas-elevation-shadow">TQPS</header>
+    <header class="tqpas-elevation-3 tqpas-elevation-shadow">TQPAS</header>
     <section>
       <router-outlet />
     </section>

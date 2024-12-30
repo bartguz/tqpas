@@ -13,6 +13,7 @@ run `npm run start` to start angular app.
 ### assignement understanding
 Assignement mentions "Google Material Design components". With vague wording like that, I assumed I am not to use Angular Material, but https://github.com/material-components/material-web - web components.
 For validators I used only the simplest ones. phone number and postal code are extremely different across the globe, and without further details, there is no valid choice.
+"After confirming the action, the user should be displayed on the main list with OFFBOARDED state without site reloading" - I assume you also mean without fetching list or single employee from backend, and frontend has to properly manage changes on its own.
 I assumed I shouldnt use any additional libraries.
 I decided to write this app as if I was future-proofing any real project. It may be overly complex for this simple scope, but limiting myself here would not allow me to showing anything interesting.
 
@@ -49,6 +50,8 @@ I tend to use component-scoped services. they are easier to maintain and do not 
 For employee list and details I decided create separate storages, instead of using list. There are 2 reasons for that:
 - list tend to use less informations than detail pages. detail page will have to fetch the additional data. current implementation would make it easier to achieve that. otherwise someone may try to create model to fit both places, making it too big, carrying often not needed data.
 -components are more independent - details component could be reused in some other part of app by exporting it as public - it will not require pulling entire employee list.
+
+I'm adding "v2" - implementation, where everything is based on central employees list storage. it makes code a bit simpler, but lowers independence of details component. GET single employee endpoint is useless in this approach. To see how it works, please write in address bar '/offboarding-v2' - this will lead to the main list equivalent.
 
 ### app & libraries:
 division into packages and use of tsconfig paths makes code prepared for division into packages served via package manager. it also promotes division into chunks.
