@@ -1,0 +1,55 @@
+<h2>Offboarding</h2>
+
+<section>
+  <md-outlined-text-field
+    #searchInput
+    label="Search"
+    (input)="onSearchChanged(searchInput.value)"
+  >
+    <md-icon slot="trailing-icon">search</md-icon>
+  </md-outlined-text-field>
+  <div class="tqpas-elevation-3 tqpas-elevation-drop-shadow">
+    <md-tabs
+      class="tqpas-pointer-events-none tqpas-border-tl-radius-10-px tqpas-border-tr-radius-10-px"
+    >
+      <md-primary-tab>Employees</md-primary-tab>
+    </md-tabs>
+
+    <br />
+    <table
+      class="tqpas-border-tr-radius-10-px tqpas-border-br-radius-10-px tqpas-border-bl-radius-10-px"
+      data-selector="offboarding-employee-list__table"
+    >
+      <tr class="tqpas-border-radius-10-px">
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Equipment</th>
+        <th>Status</th>
+      </tr>
+      @if((loading$|async)===true){
+      <tr *ngSpawn="3">
+        <td><lib-skeleton /></td>
+        <td><lib-skeleton /></td>
+        <td><lib-skeleton /></td>
+        <td><lib-skeleton /></td>
+        <td><lib-skeleton /></td>
+      </tr>
+      } @else { @if(employees$ | async; as employees){ @for(employee of
+      employees; track employee.id+employee.status){
+      <!-- bg-info anchor to allow opening in new window with cmd+left clikc or on phone with long press. display table-row to keep compability -->
+      <a
+        [routerLink]="createDetailsLink(employee)"
+        [state]="{employee}"
+        class="tqpas-border-radius-10-px"
+      >
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.department }}</td>
+        <td>{{ formatEquipments(employee) }}</td>
+        <td>{{ employee.status | titlecase }}</td>
+      </a>
+      } }}
+    </table>
+  </div>
+</section>

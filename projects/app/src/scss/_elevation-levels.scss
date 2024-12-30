@@ -1,0 +1,9 @@
+@use "sass:list";
+$elevations: 0, 1, 2, 3, 4, 5;
+
+@each $elevation in $elevations {
+
+  .tqpas-elevation-#{$elevation} {
+    --tqpas-elevation-level:#{$elevation};
+  }
+}

@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'scss/elevation-shadows';
+@use 'scss/elevation-levels';
+@use 'scss/theme';
+@use 'scss/borders';
+@use 'scss/text-format';
+
+$primary-color: #ff9600;
+$shade-color: #0d0d0d;
+$background-color: #fbfbfb;
+$hover-color: #ededed;
+
+:root {
+  --primary-color: #{$primary-color};
+  --shade-color: #{$shade-color};
+  --background-color: #{$background-color};
+  --hover-color: #{$hover-color};
+
+  body {
+    margin: unset;
+    background-color: var(--background-color);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.tqpas-pointer-events-none {
+  pointer-events: none;
+}

@@ -2,10 +2,16 @@ const http = require("http");
 
 const employees = require('./employees.json');
 const host = 'localhost';
-const port = 8000;
+const port = 8011;
 
 const requestListener = function (req, res) {
-  if (tryMatchEmployees(req)) returnEmployees(req, res);
+  res.setHeader("Access-Control-Allow-Origin","*")
+  res.setHeader("Access-Control-Allow-Headers","*")
+  if(req.method==='OPTIONS'){
+    res.writeHead(200);
+    res.end();
+  }
+  else if (tryMatchEmployees(req)) returnEmployees(req, res);
   else if (tryMatchSingleEmployee(req)) returnSingleEmployee(req, res);
   else if (tryMatchProcessOffboarding(req)) processOffboarding(req, res);
   else {
@@ -55,7 +61,7 @@ function processOffboarding(req, res) {
   }
   res.setHeader("Content-Type", "application/json");
   res.writeHead(409);
-  res.end(`{errorMessage: "${userId} already offboarded"`);
+  res.end(`{"errorMessage": "${userId} already offboarded"}`);
   return;
 }
 

@@ -1,0 +1,24 @@
+@mixin baseShadow {
+  --_level: var(--tqpas-elevation-level, 0);
+  --_shadow-color: var(--tqpas-elevation-shadow-color, var(--tqpas-sys-color-shadow, #000));
+  --_shadow-color-a: rgba(from var(--_shadow-color) r g b / 30%);
+  --_shadow-color-b: rgba(from var(--_shadow-color) r g b / 15%);
+
+}
+
+.tqpas-elevation-shadow {
+  @include baseShadow;
+
+  box-shadow:
+    0px calc(1px * (clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 3, 1) + 2 * clamp(0, var(--_level) - 4, 1))) calc(1px * (2 * clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 2, 1) + clamp(0, var(--_level) - 4, 1))) 0px var(--_shadow-color-a), 0px calc(1px * (clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 1, 1) + 2 * clamp(0, var(--_level) - 2, 3))) calc(1px * (3 * clamp(0, var(--_level), 2) + 2 * clamp(0, var(--_level) - 2, 3))) calc(1px * (clamp(0, var(--_level), 4) + 2 * clamp(0, var(--_level) - 4, 1))) var(--_shadow-color-b)
+}
+
+.tqpas-elevation-drop-shadow {
+  @include baseShadow;
+
+  filter: drop-shadow(0px calc(1px * (clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 3, 1) + 2 * clamp(0, var(--_level) - 4, 1))) calc(1px * (2 * clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 2, 1) + clamp(0, var(--_level) - 4, 1))) var(--_shadow-color-a)) drop-shadow(0px calc(1px * (clamp(0, var(--_level), 1) + clamp(0, var(--_level) - 1, 1) + 2 * clamp(0, var(--_level) - 2, 3))) calc(1px * (3 * clamp(0, var(--_level), 2) + 2 * clamp(0, var(--_level) - 2, 3))) var(--_shadow-color-b))
+}
+
+.tqpas-elevation-shadow-animated {
+  transition-property: box-shadow, filter;
+}

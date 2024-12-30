@@ -1,0 +1,24 @@
+@use "sass:list";
+@use "sass:map";
+$radi: 0, 5, 10, 15, 25, 50;
+$border-radius-corners: (
+  "tl":"top-left",
+  "tr":"top-right",
+  "br":"bottom-right",
+  "bl":"bottom-left");
+
+@each $radius in $radi {
+
+  .tqpas-border-radius-#{$radius}-px {
+    border-radius:#{$radius}px;
+  }
+}
+
+@each $corner, $full-corner in $border-radius-corners{
+  @each $radius in $radi {
+
+    .tqpas-border-#{$corner}-radius-#{$radius}-px {
+      border-#{$full-corner}-radius:#{$radius}px;
+    }
+  }
+}
