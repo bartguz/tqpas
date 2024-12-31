@@ -21,7 +21,7 @@ For validators, I used only the simplest ones. Phone number and postal code are 
 "After confirming the action, the user should be displayed on the main list with OFFBOARDED state without site reloading" - I assume you also mean without fetching list or single employee from backend, and frontend has to properly manage changes on its own, simulating working 'offline'.
 
 I decided to write this app as if I was future-proofing any real project. It may be overly complex for this simple scope, but limiting myself here would not allow me to show anything interesting. 
-There is room for more good practices of web development - among the others feature flags, logging, analytics - but I tried to not get carried away.
+There is room for more good practices of web development - among the others: feature flags, logging, analytics - but I tried to not get carried away.
 
 In this README, I may use the word "module" - I mean it as domain/subproject, not Angular ngModule.
 
