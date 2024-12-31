@@ -90,8 +90,7 @@ export class EmployeeListService {
       .map((equipment: Equipment) => equipment.name)
       .join(', ');
     if (employee.equipments?.length > limit)
-      deviceNames =
-        deviceNames + ` +${employee.equipments.length - limit} more`;
+      deviceNames = `${deviceNames} +${employee.equipments.length - limit} more`;
     return deviceNames;
   }
 }

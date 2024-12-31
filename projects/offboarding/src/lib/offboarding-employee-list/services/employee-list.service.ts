@@ -95,7 +95,7 @@ export class EmployeeListService {
       .join(', ');
     if (employee.equipments?.length > limit)
       deviceNames =
-        deviceNames + ` +${employee.equipments.length - limit} more`;
+        `${deviceNames} +${employee.equipments.length - limit} more`;
     return deviceNames;
   }
 }

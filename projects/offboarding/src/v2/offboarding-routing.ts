@@ -2,7 +2,7 @@ import { Route } from '@angular/router';
 import { OffboardingRoutes } from './offboarding-routes';
 
 export const offboardingRoutingV2: Route = {
-  path: OffboardingRoutes.Offboarding+'-v2',
+  path: `${OffboardingRoutes.Offboarding}-v2`,
   loadComponent: () =>
     import('./offboarding-scope-page.component').then(
       (c) => c.OffboardingScopePageComponentV2
