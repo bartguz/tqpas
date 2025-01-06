@@ -2,6 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideStore } from '@ngrx/store';
 import { ENVIRONMENT } from '@tqpas/shared';
 import { environment } from '../environments/environment.development';
 import { routes } from './app.routes';
@@ -13,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideHttpClient(withFetch()),
     { provide: ENVIRONMENT, useValue: environment },
-  ],
+    provideStore(),
+],
 };

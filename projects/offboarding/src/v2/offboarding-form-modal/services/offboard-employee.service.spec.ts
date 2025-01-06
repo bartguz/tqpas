@@ -8,7 +8,7 @@ import { EmployeeOffboarding } from '../models/employee-offboarding';
 import { CREATE_EMPLOYEE_OFFBOARDING_PROVIDER } from '../tokens/create-employee-offboarding.token';
 import { OffboardEmployeeService } from './offboard-employee.service';
 
-describe('OffboardEmployeeService', () => {
+describe('OffboardEmployeeServiceV2', () => {
   let service: OffboardEmployeeService;
 
   beforeEach(() => {

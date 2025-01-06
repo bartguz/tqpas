@@ -10,6 +10,7 @@ export class EmployeeDetailsService {
   private readonly employeesStore: EmployeesStore = inject(
     EmployeesStore
   );
+  // bg-info: separate component store with effect could be used together with Observable paramMap. However, this approach follows v2, without pulling single employees separately.
   readonly employee$: Observable<Employee | undefined> = combineLatest([
     this.employeesStore.employees$,
     inject(ActivatedRoute).paramMap.pipe(

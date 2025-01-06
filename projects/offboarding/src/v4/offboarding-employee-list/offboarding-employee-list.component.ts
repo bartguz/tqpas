@@ -10,13 +10,19 @@ import '@material/web/divider/divider';
 import '@material/web/icon/icon';
 import '@material/web/tabs/primary-tab';
 import '@material/web/textfield/outlined-text-field';
+import { Store } from '@ngrx/store';
 import { NgSpawnDirective, SkeletonComponent } from '@tqpas/ui';
 import { Observable } from 'rxjs';
+import { setEmployeesFilterAction } from '../actions/employee.actions';
+import { EmployeesState } from '../models/employees-state';
+import {
+  filteredEmployeesSelector,
+  selectEmployeeListLoading,
+} from '../selectors/employee.selectors';
 import { EmployeeListItem } from './models/employe-list-item';
-import { EmployeeListService } from './services/employee-list.service';
 
 @Component({
-  selector: 'lib-offboarding-employee-list-v2',
+  selector: 'lib-offboarding-employee-list-v4',
   imports: [
     RouterLink,
     AsyncPipe,
@@ -29,16 +35,14 @@ import { EmployeeListService } from './services/employee-list.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class OffboardingEmployeeListComponentV2 {
-  private readonly employeeListService: EmployeeListService =
-    inject(EmployeeListService);
+export class OffboardingEmployeeListComponentV4 {
+  private readonly store: Store<{ offboarding: EmployeesState }> =
+    inject(Store);
   readonly employeesListItems$: Observable<EmployeeListItem[]> =
-    this.employeeListService.filteredEmployees$;
-  readonly loading$ = this.employeeListService.loading$;
+    this.store.select(filteredEmployeesSelector);
+  readonly loading$ = this.store.select(selectEmployeeListLoading);
 
   onSearchChanged(value: string): void {
-    this.employeeListService.setSearchFilter(value);
+    this.store.dispatch(setEmployeesFilterAction({ searchText: value }));
   }
-
-
 }

@@ -8,7 +8,7 @@ import { activeEmployee } from '../../testing/employee.mock';
 import { CREATE_EMPLOYEE_OFFBOARDING_PROVIDER } from '../tokens/create-employee-offboarding.token';
 import { OffboardEmployeeService } from './offboard-employee.service';
 
-describe('OffboardEmployeeService', () => {
+describe('OffboardEmployeeServiceV3', () => {
   let service: OffboardEmployeeService;
 
   beforeEach(() => {

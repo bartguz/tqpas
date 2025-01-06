@@ -8,7 +8,7 @@ import { OffboardingEmployeeDetailsComponentV3 } from './offboarding-employee-de
 import { EmployeeDetailsService } from './service/employee-details.service';
 import { SkeletonComponent } from '@tqpas/ui';
 
-@Component({ selector: 'lib-offboarding-form-modal-v2' })
+@Component({ selector: 'lib-offboarding-form-modal-v3' })
 class OffboardingFormModalComponentMock {
   open = open;
 }

@@ -1,0 +1,32 @@
+<md-dialog #dialog>
+  <div slot="headline">Offboard</div>
+  <form
+    slot="content"
+    id="offboard-form"
+    method="dialog"
+    [formGroup]="offboardingForm"
+  >
+    @for(controlDefinition of controlDefinitions; track controlDefinition){
+    <md-outlined-text-field
+      [error]="controlDefinition.hasError$ | async"
+      label="{{ controlDefinition.controlName | titlecase }}"
+      ngDefaultControl
+      formControlName="{{ controlDefinition.controlName }}"
+      type="{{ controlDefinition.controlName === 'notes' ? 'textarea' : '' }}"
+    />
+    }
+  </form>
+  <div slot="actions" data-selector="offboarding-form-modal__actions">
+    @if(processing$|async){<md-linear-progress
+      indeterminate
+    ></md-linear-progress
+    >} @if(error$|async; as error){ <span>{{ error }}</span> }
+    <md-text-button form="offboard-form" value="cancel">Cancel</md-text-button>
+    <md-filled-button
+      (click)="offboardEmployee()"
+      value="ok"
+      [disabled]="offboardingForm.invalid"
+      >Ok</md-filled-button
+    >
+  </div>
+</md-dialog>

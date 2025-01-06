@@ -75,11 +75,14 @@ How scoped services fit in this example:
 - when leaving details view, all its services will be destroyed, freeing memory
 - details view could easily use a more detailed model, and list only minimal model
 
-#### v2 and v3
-"v2" - implementation, where everything is based on central employees list storage. It makes code a bit simpler but makes the details component directly dependent on it. GET single employee endpoint is useless in this approach. To see how it works, please write in the address bar '/offboarding-v2' - this will lead to the main list equivalent.
+#### v2, v3, v4
+Additional implementations of state management. They are meant to highlight various approaches.
+"v2" - implementation, where everything is based on central employees list storage. It makes code a bit simpler but makes the details component directly dependent on it. GET single employee endpoint is useless in this approach. 
 "v3" - similar to above, but based on ngrx component store. I tried to avoid one massive store file, so some logic remains in subservices, like offboarding service.
+"v4" - as a last touch, I also added global ngrx store. I was speeding to deliver this one, so it may be a bit less polished.
 
-If I was to use libraries, these approaches could be replaced by some kind of store.
+To access any of these versions, please navigate to '/offboarding-v2', '/offboarding-v3' or '/offboarding-v4'
+
 
 ### app & libraries:
 The app is divided into packages, and tsconfig paths are used to reference their contents.
