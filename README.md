@@ -21,11 +21,14 @@ For validators, I used only the simplest ones. Phone number and postal code are 
 "After confirming the action, the user should be displayed on the main list with OFFBOARDED state without site reloading" - I assume you also mean without fetching list or single employee from backend, and frontend has to properly manage changes on its own, simulating working 'offline'.
 
 I decided to write this app as if I was future-proofing any real project. It may be overly complex for this simple scope, but limiting myself here would not allow me to show anything interesting. 
-There is room for more good practices of web development - among the others feature flags, logging, analytics - but I tried to not get carried away.
+There is room for more good practices of web development - among the others: feature flags, logging, analytics - but I tried to not get carried away.
 
 In this README, I may use the word "module" - I mean it as domain/subproject, not Angular ngModule.
 
 I left a few notes around. Please, look for comments with 'bg-info' - they give some additional insight.
+
+Nomenclature - **Storage** - service that holds state and provides it in reactive manner via RXJS observable. THIS IS NOT RELATED TO LOCAL OR SESSION STORAGE.
+I used this naming to show distinction from "store" that usually is meant as Redux store, with its built in pub/sub, actions and so on.
 
 ### tests
 I created tests only for selected files. These will give some sense to how I write them. Covering everything would be just too time-consuming. However, if you wish to see more, I will add them.
@@ -72,6 +75,8 @@ How scoped services fit in this example:
 - details view could easily use a more detailed model, and list only minimal model
 
 I'm adding "v2" - implementation, where everything is based on central employees list storage. It makes code a bit simpler but makes the details component directly dependent on it. GET single employee endpoint is useless in this approach. To see how it works, please write in the address bar '/offboarding-v2' - this will lead to the main list equivalent.
+
+If I was to use libraries, these approaches could be replaced by some kind of store.
 
 ### app & libraries:
 The app is divided into packages, and tsconfig paths are used to reference their contents.
