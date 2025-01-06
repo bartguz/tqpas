@@ -1,7 +1,7 @@
-import { Employee } from "../models/employee";
-import { EmployeeStatus } from "../models/employee-status";
+import { Employee } from '../models/employee';
+import { EmployeeStatus } from '../models/employee-status';
 
-export const activeEmployee:Employee={
+export const activeEmployee: Employee = {
   id: 'aaa',
   name: 'Bob Snow',
   department: 'Engineering',
@@ -12,15 +12,27 @@ export const activeEmployee:Employee={
       id: 'xxx',
       name: 'Macbook Air',
     },
+    {
+      id: 'yyy',
+      name: 'Macbook Water',
+    },
+    {
+      id: 'zzz',
+      name: 'Macbook Fire',
+    },
+    {
+      id: 'xyz',
+      name: 'Macbook Earth',
+    },
   ],
 };
 
-export const offboarderEmployee:Employee={
+export const offboarderEmployee: Employee = {
   id: 'bbb',
-  name: 'Bob Snow',
-  department: 'Engineering',
+  name: 'Rob Lava',
+  department: 'Human Resources',
   status: EmployeeStatus.Offboarded,
-  email: 'bob.snow@wp.pl',
+  email: 'rob.lava@wp.pl',
   equipments: [
     {
       id: 'zzz',
