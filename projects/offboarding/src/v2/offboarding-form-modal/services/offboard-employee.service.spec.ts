@@ -2,7 +2,6 @@ import { TestBed } from '@angular/core/testing';
 
 import { NEVER, of, throwError } from 'rxjs';
 import { EmployeeStatus } from '../../models/employee-status';
-import { EmployeeDetailsStorageService } from '../../offboarding-employee-details/service/employee-details-storage.service';
 import { EmployeeStorageService } from '../../offboarding-employee-list/services/employee-storage.service';
 import { activeEmployee } from '../../testing/employee.mock';
 import { EmployeeOffboarding } from '../models/employee-offboarding';
@@ -24,13 +23,6 @@ describe('OffboardEmployeeService', () => {
           },
         },
         {
-          provide: EmployeeDetailsStorageService,
-          useValue: {
-            employee$: of(activeEmployee),
-            setEmployee,
-          },
-        },
-        {
           provide: CREATE_EMPLOYEE_OFFBOARDING_PROVIDER,
           useValue: {
             createEmployeeOffboarding$,
@@ -39,7 +31,6 @@ describe('OffboardEmployeeService', () => {
       ],
     });
     setEmployees.calls.reset();
-    setEmployee.calls.reset();
     createEmployeeOffboarding$.and.returnValue(of(void 0));
     service = TestBed.inject(OffboardEmployeeService);
   });
@@ -52,7 +43,6 @@ describe('OffboardEmployeeService', () => {
 
     service.offboardEployee$(activeEmployee.id, offboarding).subscribe(() => {
       expect(setEmployees).toHaveBeenCalledWith([updatedEmployee]);
-      expect(setEmployee).toHaveBeenCalledWith(updatedEmployee);
     });
     service.processing$.subscribe((result) => expect(result).toEqual(false));
     service.error$.subscribe((result) => expect(result).toEqual(''));
@@ -69,7 +59,6 @@ describe('OffboardEmployeeService', () => {
     service.offboardEployee$(activeEmployee.id, offboarding).subscribe({
       error: () => {
         expect(setEmployees).toHaveBeenCalledTimes(0);
-        expect(setEmployee).toHaveBeenCalledTimes(0);
       },
     });
     service.processing$.subscribe((result) => expect(result).toEqual(false));
@@ -86,7 +75,6 @@ describe('OffboardEmployeeService', () => {
     service.offboardEployee$(activeEmployee.id, offboarding).subscribe({
       error: () => {
         expect(setEmployees).toHaveBeenCalledTimes(0);
-        expect(setEmployee).toHaveBeenCalledTimes(0);
       },
     });
     service.processing$.subscribe((result) => expect(result).toEqual(false));
@@ -100,7 +88,6 @@ describe('OffboardEmployeeService', () => {
 
     service.offboardEployee$(activeEmployee.id, offboarding).subscribe();
     expect(setEmployees).toHaveBeenCalledTimes(0);
-    expect(setEmployee).toHaveBeenCalledTimes(0);
     service.processing$.subscribe((result) => expect(result).toEqual(true));
     service.error$.subscribe((result) =>
       expect(result).toEqual('')
@@ -109,7 +96,6 @@ describe('OffboardEmployeeService', () => {
 });
 
 const setEmployees = jasmine.createSpy('setEmployees');
-const setEmployee = jasmine.createSpy('setEmployee');
 const createEmployeeOffboarding$ = jasmine.createSpy(
   'createEmployeeOffboarding$'
 );

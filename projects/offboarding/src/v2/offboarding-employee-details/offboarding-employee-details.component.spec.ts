@@ -4,26 +4,26 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
 import { Employee } from '../models/employee';
 import { activeEmployee, offboarderEmployee } from '../testing/employee.mock';
-import { OffboardingEmployeeDetailsComponent } from './offboarding-employee-details.component';
+import { OffboardingEmployeeDetailsComponentV2 } from './offboarding-employee-details.component';
 import { EmployeeDetailsService } from './service/employee-details.service';
 import { SkeletonComponent } from '@tqpas/ui';
 
-@Component({ selector: 'lib-offboarding-form-modal' })
+@Component({ selector: 'lib-offboarding-form-modal-v2' })
 class OffboardingFormModalComponentMock {
   open = open;
 }
 
-describe('OffboardingEmployeeDetailsComponent', () => {
-  let component: OffboardingEmployeeDetailsComponent;
-  let fixture: ComponentFixture<OffboardingEmployeeDetailsComponent>;
+describe('OffboardingEmployeeDetailsComponentV2', () => {
+  let component: OffboardingEmployeeDetailsComponentV2;
+  let fixture: ComponentFixture<OffboardingEmployeeDetailsComponentV2>;
   let employeeSubject = new BehaviorSubject<Employee>(activeEmployee);
   let loadingSubject = new BehaviorSubject<boolean>(false);
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [OffboardingEmployeeDetailsComponent],
+      imports: [OffboardingEmployeeDetailsComponentV2],
     })
-      .overrideComponent(OffboardingEmployeeDetailsComponent, {
+      .overrideComponent(OffboardingEmployeeDetailsComponentV2, {
         set: {
           imports: [
             AsyncPipe,
@@ -43,7 +43,7 @@ describe('OffboardingEmployeeDetailsComponent', () => {
         },
       })
       .compileComponents();
-    fixture = TestBed.createComponent(OffboardingEmployeeDetailsComponent);
+    fixture = TestBed.createComponent(OffboardingEmployeeDetailsComponentV2);
     component = fixture.componentInstance;
   });
 
