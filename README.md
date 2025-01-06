@@ -14,7 +14,8 @@ run `npm run start` to start Angular app.
 ### Assignment understanding
 The assignment mentions "Google Material Design Components." With vague wording like that, I assumed I am not to use Angular Material, but https://github.com/material-components/material-web - web components.
 
-I assumed I shouldn't use any additional external packages (like store or test mocks libs). 
+~~I assumed I shouldn't use any additional external packages (like store or test mocks libs).~~ 
+Initially, I didn't use external libraries, but having more time, I decided to add NGRX component store for comparison to vanilla approach. More below - look for v3.
 
 For validators, I used only the simplest ones. Phone number and postal code are extremely different across the globe, and without further details, there is no valid choice.
 
@@ -74,7 +75,9 @@ How scoped services fit in this example:
 - when leaving details view, all its services will be destroyed, freeing memory
 - details view could easily use a more detailed model, and list only minimal model
 
-I'm adding "v2" - implementation, where everything is based on central employees list storage. It makes code a bit simpler but makes the details component directly dependent on it. GET single employee endpoint is useless in this approach. To see how it works, please write in the address bar '/offboarding-v2' - this will lead to the main list equivalent.
+#### v2 and v3
+"v2" - implementation, where everything is based on central employees list storage. It makes code a bit simpler but makes the details component directly dependent on it. GET single employee endpoint is useless in this approach. To see how it works, please write in the address bar '/offboarding-v2' - this will lead to the main list equivalent.
+"v3" - similar to above, but based on ngrx component store. I tried to avoid one massive store file, so some logic remains in subservices, like offboarding service.
 
 If I was to use libraries, these approaches could be replaced by some kind of store.
 

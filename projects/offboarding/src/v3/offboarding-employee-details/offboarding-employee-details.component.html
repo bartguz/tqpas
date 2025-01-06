@@ -1,0 +1,57 @@
+@if({loading:loading$ | async, employee:employee$|async};as data){
+<md-text-button data-selector="offboarding-employee-details__back-button" (click)="goBack()">
+  <!-- <md-icon slot="icon">chevron_left</md-icon> -->
+  <md-icon slot="icon">arrow_back_ios</md-icon>
+  Back
+</md-text-button>
+<section data-selector="offboarding-employee-details__header">
+  <h2>
+    @if(data.loading){<lib-skeleton style="width: 10dvw; height: 29px" />}
+    @else{ {{ data.employee?.name }} }
+  </h2>
+  <md-filled-button data-selector="offboarding-employee-details__offboard-button" [disabled]="(isOffboardable$ | async) === false" (click)="modal.open()">
+    <span
+      >@if(data.loading){<lib-skeleton style="width: 5dvw" />} @else{
+      {{ offboardButtonText$ | async }}
+      }</span
+    >
+  </md-filled-button>
+</section>
+<section data-selector="offboarding-employee-details__info">
+  <h5>Employee Details</h5>
+  <br />
+  <md-divider />
+  <br />
+  <div>
+    <small>Email</small>
+    <span>
+      @if(data.loading){<lib-skeleton style="width: 5dvw" />} @else{
+      {{ data.employee?.email }} }</span
+    >
+  </div>
+  <div>
+    <small>Department</small>
+    <span>
+      @if(data.loading){<lib-skeleton style="width: 5dvw" />} @else{
+      {{ data.employee?.department }} }</span
+    >
+  </div>
+</section>
+<section data-selector="offboarding-employee-details__equipment">
+  <h5>Equipment</h5>
+  <br />
+  <md-divider />
+  <br />
+  <div>
+    @if(data.loading){
+    <div><lib-skeleton style="width: 90%" /></div>
+    <div><lib-skeleton style="width: 90%" /></div>
+    } @else{ @for(equipment of data.employee?.equipments??[]; track
+    equipment.id){
+    <div class="tqpas-border-radius-10-px">{{ equipment.name }}</div>
+    } }
+  </div>
+</section>
+<lib-offboarding-form-modal-v3 #modal [employeeId]="data.employee?.id"></lib-offboarding-form-modal-v3>
+}
+

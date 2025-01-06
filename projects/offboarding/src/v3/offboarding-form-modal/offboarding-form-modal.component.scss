@@ -1,0 +1,24 @@
+:host {
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  [data-selector="offboarding-form-modal__actions"] {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    md-linear-progress {
+      flex-basis: 100%;
+    }
+
+    span {
+      text-align:end;
+      flex-basis: 100%;
+      color: var(--md-sys-color-error);
+    }
+  }
+
+}
