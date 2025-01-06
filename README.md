@@ -6,6 +6,7 @@ Alternatively, run `node ./mock-server/generator.js X` where X stands for the am
 
 run `npm run start-server` to start mocked server.
 run `npm run start` to start Angular app.
+run `ng test offboarding` to run tests. Only offboarding has tests
 
 
 
